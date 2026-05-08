@@ -12,7 +12,14 @@
 
       <!-- Agent photo — above text on mobile, right column on desktop -->
       <div class="hero__photo-wrap" aria-hidden="true">
-        <img src="images/agent.webp" alt="" class="hero__photo" />
+        <img
+          src="images/agent.webp"
+          alt=""
+          class="hero__photo"
+          [class.is-loaded]="photoLoaded()"
+          (load)="photoLoaded.set(true)"
+          decoding="async"
+        />
       </div>
 
       <!-- Text column -->
