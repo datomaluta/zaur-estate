@@ -1,0 +1,58 @@
+<header class="navbar" [class.navbar--scrolled]="isScrolled()">
+  <div class="navbar__container">
+
+    <!-- Logo -->
+    <a href="#hero" class="navbar__logo" (click)="closeMenu()">
+      Zaur<span class="navbar__logo-accent"> Realty</span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <nav class="navbar__links" aria-label="Main navigation">
+      @for (link of navLinks; track link.key) {
+        <a [href]="link.anchor" class="navbar__link">{{ getLinkLabel(link.key) }}</a>
+      }
+    </nav>
+
+    <!-- Desktop actions -->
+    <div class="navbar__actions">
+      <!-- Language toggle -->
+      <button class="navbar__lang-toggle" (click)="lang.toggle()" [attr.aria-label]="'Switch language'">
+        <span [class.active]="lang.currentLang() === 'en'">EN</span>
+        <span class="navbar__lang-divider">|</span>
+        <span [class.active]="lang.currentLang() === 'ka'">KA</span>
+      </button>
+
+      <a href="tel:+995555123456" class="navbar__cta">{{ lang.t().nav.cta }}</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <div class="navbar__mobile-controls">
+      <button class="navbar__lang-toggle navbar__lang-toggle--mobile" (click)="lang.toggle()" [attr.aria-label]="'Switch language'">
+        <span [class.active]="lang.currentLang() === 'en'">EN</span>
+        <span class="navbar__lang-divider">|</span>
+        <span [class.active]="lang.currentLang() === 'ka'">KA</span>
+      </button>
+      <button class="navbar__hamburger" (click)="toggleMenu()" [attr.aria-expanded]="isMobileMenuOpen()" aria-label="Toggle menu">
+        @if (isMobileMenuOpen()) {
+          <lucide-icon name="X" [size]="22" [strokeWidth]="1.8" />
+        } @else {
+          <lucide-icon name="Menu" [size]="22" [strokeWidth]="1.8" />
+        }
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  @if (isMobileMenuOpen()) {
+    <div class="navbar__mobile-menu">
+      <nav class="navbar__mobile-nav">
+        @for (link of navLinks; track link.key) {
+          <a [href]="link.anchor" class="navbar__mobile-link" (click)="closeMenu()">
+            {{ getLinkLabel(link.key) }}
+          </a>
+        }
+      </nav>
+      <a href="tel:+995555123456" class="navbar__mobile-cta" (click)="closeMenu()">{{ lang.t().nav.cta }}</a>
+    </div>
+  }
+</header>

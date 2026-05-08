@@ -1,0 +1,233 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: $color-navy;
+
+  // ── Background ───────────────────────────────────────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    animation: heroPan 12s ease-out both;
+  }
+
+  &__bg-gradient {
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba($color-navy-light, 0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 75% 80%, rgba($color-gold, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, $color-navy 0%, $color-navy-mid 50%, #0D2137 100%);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba($color-navy, 0.15) 0%,
+      rgba($color-navy, 0.05) 50%,
+      rgba($color-navy, 0.4) 100%
+    );
+  }
+
+  // ── Content ──────────────────────────────────────────────
+  &__content {
+    position: relative;
+    z-index: $z-raised;
+    width: 100%;
+    padding-top: $navbar-height;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-6;
+    padding-top: $space-8;
+    padding-bottom: $space-20;
+    @include container;
+
+    @include respond-to('lg') {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      align-items: center;
+      column-gap: $space-10;
+      padding-block: $space-24;
+    }
+
+    @include respond-to('xl') {
+      grid-template-columns: 1fr 420px;
+      column-gap: $space-12;
+    }
+  }
+
+  // ── Text column ───────────────────────────────────────────
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-6;
+
+    @include respond-to('lg') {
+      grid-column: 1;
+      grid-row: 1;
+    }
+  }
+
+  // ── Agent photo ───────────────────────────────────────────
+  &__photo-wrap {
+    position: relative;
+    border-radius: $radius-xl;
+    overflow: hidden;
+    width: 100%;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba($color-navy, 0.65) 100%);
+      z-index: 1;
+    }
+
+    @include respond-to('lg') {
+      grid-column: 2;
+      grid-row: 1;
+      border-radius: $radius-xl $radius-lg $radius-lg $radius-xl;
+      align-self: center;
+      box-shadow: -24px 0 60px rgba($color-navy, 0.6), 0 24px 60px rgba($color-navy, 0.5);
+
+      &::after {
+        background:
+          linear-gradient(to right, rgba($color-navy, 0.55) 0%, transparent 28%),
+          linear-gradient(to bottom, rgba($color-navy, 0.25) 0%, transparent 18%, transparent 65%, rgba($color-navy, 0.7) 100%);
+      }
+    }
+  }
+
+  &__photo {
+    display: block;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: inherit;
+
+    @include respond-to('lg') {
+      height: 580px;
+    }
+
+    @include respond-to('xl') {
+      height: 640px;
+    }
+  }
+
+  &__eyebrow {
+    @include eyebrow;
+    color: $color-gold-light;
+  }
+
+  &__headline {
+    @include heading-xl;
+    color: $color-white;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+
+  &__headline-line {
+    display: block;
+    animation: fadeInUp 0.7s ease both;
+
+    &:nth-child(2) { animation-delay: 0.12s; }
+  }
+
+  &__sub {
+    font-size: clamp($text-base, 2vw, $text-lg);
+    color: rgba($color-white, 0.75);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 0;
+    animation: fadeInUp 0.7s 0.2s ease both;
+  }
+
+  // ── CTA group ────────────────────────────────────────────
+  &__cta-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-4;
+    animation: fadeInUp 0.7s 0.32s ease both;
+  }
+
+  &__cta-primary {
+    @include btn-primary;
+    animation: goldPulse 2.5s 1.2s ease-in-out infinite;
+  }
+
+  &__cta-secondary {
+    @include btn-ghost;
+    font-size: $text-sm;
+    font-weight: 500;
+    color: rgba($color-white, 0.7);
+    border: 1px solid rgba($color-white, 0.25);
+    border-radius: $radius-sm;
+    padding: $space-3 $space-8;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    &:hover {
+      color: $color-white;
+      border-color: rgba($color-white, 0.6);
+      background: rgba($color-white, 0.05);
+    }
+  }
+
+  // ── Badge ────────────────────────────────────────────────
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-2 $space-4;
+    background: rgba($color-white, 0.07);
+    border: 1px solid rgba($color-white, 0.12);
+    border-radius: $radius-full;
+    font-size: $text-xs;
+    color: rgba($color-white, 0.8);
+    letter-spacing: 0.04em;
+    animation: fadeInUp 0.7s 0.45s ease both;
+  }
+
+  &__star-icon {
+    color: $color-gold;
+    fill: $color-gold;
+    flex-shrink: 0;
+  }
+
+  // ── Scroll indicator ─────────────────────────────────────
+  &__scroll-indicator {
+    position: absolute;
+    bottom: $space-8;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: $z-raised;
+    display: none;
+
+    @include respond-to('md') { display: block; }
+  }
+
+  &__scroll-line {
+    display: block;
+    width: 1.5px;
+    height: 48px;
+    background: linear-gradient($color-gold, transparent);
+    animation: fadeInUp 1s 1s ease both;
+    margin: 0 auto;
+  }
+}

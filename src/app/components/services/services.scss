@@ -1,0 +1,112 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.services {
+  background: $color-off-white;
+  @include section-padding;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto $space-16;
+  }
+
+  &__title {
+    @include section-title;
+    @include gold-underline(56px);
+    display: inline-block;
+    margin-bottom: $space-6;
+  }
+
+  &__subtitle {
+    color: $color-text-muted;
+    font-size: $text-lg;
+    margin-bottom: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-6;
+
+    @include respond-to('md') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include respond-to('lg') {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__card {
+    @include card;
+    padding: $space-8;
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    cursor: default;
+
+    &--active {
+      border-color: $color-gold;
+      box-shadow: $shadow-gold;
+
+      .services__card-icon {
+        background: rgba($color-gold, 0.18);
+        color: $color-gold;
+      }
+    }
+  }
+
+  &__card-icon {
+    width: 56px;
+    height: 56px;
+    @include flex-center;
+    border-radius: $radius-md;
+    background: rgba($color-navy, 0.06);
+    color: $color-navy;
+    transition: background $transition-base, color $transition-base;
+    flex-shrink: 0;
+  }
+
+  &__card-title {
+    font-size: $text-xl;
+    font-weight: 600;
+    color: $color-navy;
+    font-family: $font-heading;
+  }
+
+  &__card-desc {
+    font-size: $text-sm;
+    color: $color-text-muted;
+    line-height: 1.65;
+    margin-bottom: 0;
+    flex: 1;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    margin-top: $space-2;
+    padding-top: $space-4;
+    border-top: 1px solid $color-warm-gray;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    font-size: $text-sm;
+    color: $color-text-dark;
+    font-weight: 500;
+  }
+
+  &__check {
+    color: $color-gold;
+    flex-shrink: 0;
+  }
+}

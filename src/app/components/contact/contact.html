@@ -1,0 +1,55 @@
+<section class="contact" id="contact">
+  <div class="contact__container">
+    <div class="contact__layout">
+
+      <!-- Info panel -->
+      <div class="contact__info">
+        <span class="section-eyebrow" style="color: rgba(201,168,76,0.85)">{{ lang.t().contact.eyebrow }}</span>
+        <h2 class="contact__title">{{ lang.t().contact.title }}</h2>
+        <p class="contact__subtitle">{{ lang.t().contact.subtitle }}</p>
+
+        <ul class="contact__details">
+          @for (item of contactInfo; track item.key) {
+            <li class="contact__detail-item">
+              <div class="contact__detail-icon">
+                <lucide-icon [name]="item.icon" [size]="18" [strokeWidth]="1.5" />
+              </div>
+              <span>{{ getContactValue(item.key) }}</span>
+            </li>
+          }
+        </ul>
+
+        <div class="contact__agent-card">
+          <div class="contact__agent-avatar">Z</div>
+          <div>
+            <strong class="contact__agent-name">Zaur</strong>
+            <span class="contact__agent-title">Senior Real Estate Agent</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call CTA panel -->
+      <div class="contact__call-panel">
+        <div class="contact__call-icon">
+          <lucide-icon name="PhoneCall" [size]="36" [strokeWidth]="1.5" />
+        </div>
+        <h3 class="contact__call-title">{{ lang.t().contact.callTitle }}</h3>
+        <p class="contact__call-desc">{{ lang.t().contact.callDesc }}</p>
+        <a [href]="'tel:' + lang.t().contact.phoneRaw" class="contact__call-btn">
+          <lucide-icon name="Phone" [size]="18" [strokeWidth]="1.8" />
+          {{ lang.t().contact.phone }}
+        </a>
+        <p class="contact__call-hours">{{ lang.t().contact.hours }}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!--
+  FORM PANEL — commented out temporarily, to be re-enabled when backend is ready
+
+  <div class="contact__form-wrap">
+    ... reactive form content ...
+  </div>
+-->

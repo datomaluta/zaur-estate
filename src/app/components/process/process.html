@@ -1,0 +1,29 @@
+<section class="process" id="process">
+  <div class="process__container">
+    <header class="process__header">
+      <span class="section-eyebrow">{{ lang.t().process.eyebrow }}</span>
+      <h2 class="process__title">{{ lang.t().process.title }}</h2>
+      <p class="process__subtitle">{{ lang.t().process.subtitle }}</p>
+    </header>
+
+    <div class="process__steps">
+      @for (step of lang.t().process.steps; track step.title; let i = $index) {
+        <div class="process__step" #stepEl>
+          <div class="process__step-top">
+            <div class="process__step-number">
+              <lucide-icon [name]="getIcon(i)" [size]="20" [strokeWidth]="1.5" />
+            </div>
+            @if (i < lang.t().process.steps.length - 1) {
+              <div class="process__connector" aria-hidden="true"></div>
+            }
+          </div>
+          <div class="process__step-body">
+            <span class="process__step-index">0{{ i + 1 }}</span>
+            <h3 class="process__step-title">{{ step.title }}</h3>
+            <p class="process__step-desc">{{ step.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

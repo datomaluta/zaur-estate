@@ -1,0 +1,133 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.process {
+  background: $color-navy;
+  @include section-padding;
+
+  &__container {
+    @include container;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto $space-16;
+
+    .section-eyebrow { color: $color-gold; }
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp($text-2xl, 3.5vw, $text-3xl);
+    font-weight: 600;
+    color: $color-white;
+    margin-bottom: $space-4;
+  }
+
+  &__subtitle {
+    color: rgba($color-white, 0.6);
+    font-size: $text-base;
+    margin-bottom: 0;
+  }
+
+  // ── Steps grid ────────────────────────────────────────────
+  &__steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-10;
+
+    @include respond-to('lg') {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+  }
+
+  &__step {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+
+    @include respond-to('lg') {
+      padding-inline: $space-4;
+    }
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    // Stagger delays
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.12}s;
+      }
+    }
+  }
+
+  // ── Step top row (icon + connector line) ──────────────────
+  &__step-top {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+
+  &__step-number {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    @include flex-center;
+    border-radius: $radius-full;
+    background: rgba($color-gold, 0.15);
+    border: 2px solid $color-gold;
+    color: $color-gold;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__connector {
+    display: none;
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, $color-gold, rgba($color-gold, 0.15));
+    margin-left: $space-2;
+
+    @include respond-to('lg') {
+      display: block;
+    }
+  }
+
+  // ── Step body ─────────────────────────────────────────────
+  &__step-body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+  }
+
+  &__step-index {
+    font-family: $font-mono;
+    font-size: $text-xs;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: $color-gold;
+    opacity: 0.7;
+  }
+
+  &__step-title {
+    font-family: $font-heading;
+    font-size: $text-lg;
+    font-weight: 600;
+    color: $color-white;
+    line-height: 1.3;
+  }
+
+  &__step-desc {
+    font-size: $text-sm;
+    color: rgba($color-white, 0.6);
+    line-height: 1.65;
+    margin-bottom: 0;
+  }
+}

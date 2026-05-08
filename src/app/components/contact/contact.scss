@@ -1,0 +1,371 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.contact {
+  background: $color-navy;
+  @include section-padding;
+
+  &__container {
+    @include container;
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $space-12;
+
+    @include respond-to('lg') {
+      grid-template-columns: 1fr 1.4fr;
+      gap: $space-16;
+      align-items: start;
+    }
+  }
+
+  // ── Info panel ────────────────────────────────────────────
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $space-6;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: clamp($text-2xl, 3.5vw, $text-3xl);
+    font-weight: 600;
+    color: $color-white;
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+  &__subtitle {
+    color: rgba($color-white, 0.6);
+    font-size: $text-base;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+    padding-top: $space-4;
+    border-top: 1px solid rgba($color-white, 0.1);
+  }
+
+  &__detail-item {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    font-size: $text-sm;
+    color: rgba($color-white, 0.7);
+  }
+
+  &__detail-icon {
+    width: 36px;
+    height: 36px;
+    @include flex-center;
+    border-radius: $radius-md;
+    background: rgba($color-gold, 0.12);
+    color: $color-gold;
+    flex-shrink: 0;
+  }
+
+  &__agent-card {
+    display: flex;
+    align-items: center;
+    gap: $space-4;
+    padding: $space-5;
+    border-radius: $radius-lg;
+    border: 1px solid rgba($color-white, 0.1);
+    background: rgba($color-white, 0.03);
+    margin-top: $space-2;
+  }
+
+  &__agent-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: $radius-full;
+    background: linear-gradient(135deg, $color-gold, $color-gold-light);
+    color: $color-navy;
+    font-family: $font-heading;
+    font-size: $text-2xl;
+    font-weight: 700;
+    @include flex-center;
+    flex-shrink: 0;
+  }
+
+  &__agent-name {
+    display: block;
+    font-family: $font-heading;
+    font-size: $text-lg;
+    font-weight: 600;
+    color: $color-white;
+  }
+
+  &__agent-title {
+    display: block;
+    font-size: $text-xs;
+    color: $color-gold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: $space-1;
+  }
+
+  // ── Call CTA panel ────────────────────────────────────────
+  &__call-panel {
+    background: rgba($color-white, 0.04);
+    border: 1px solid rgba($color-gold, 0.25);
+    border-radius: $radius-xl;
+    padding: $space-10 $space-8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-5;
+    align-self: center;
+  }
+
+  &__call-icon {
+    width: 72px;
+    height: 72px;
+    @include flex-center;
+    border-radius: $radius-full;
+    background: rgba($color-gold, 0.12);
+    color: $color-gold;
+    flex-shrink: 0;
+  }
+
+  &__call-title {
+    font-family: $font-heading;
+    font-size: clamp($text-xl, 2.5vw, $text-2xl);
+    font-weight: 600;
+    color: $color-white;
+    line-height: 1.25;
+  }
+
+  &__call-desc {
+    color: rgba($color-white, 0.6);
+    font-size: $text-base;
+    line-height: 1.7;
+    margin-bottom: 0;
+    max-width: 420px;
+  }
+
+  &__call-btn {
+    @include btn-primary;
+    font-size: $text-base;
+    padding: $space-4 $space-10;
+    gap: $space-3;
+    margin-top: $space-2;
+  }
+
+  &__call-hours {
+    font-size: $text-sm;
+    color: rgba($color-white, 0.4);
+    margin-bottom: 0;
+    letter-spacing: 0.03em;
+  }
+
+  // ── Form wrap (commented out / reserved) ──────────────────
+  &__form-wrap {
+    background: $color-white;
+    border-radius: $radius-xl;
+    padding: $space-8;
+
+    @include respond-to('md') {
+      padding: $space-10 $space-10;
+    }
+  }
+
+  // ── Success state ─────────────────────────────────────────
+  &__success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $space-4;
+    padding-block: $space-12;
+  }
+
+  &__success-icon {
+    color: $color-success;
+    width: 72px;
+    height: 72px;
+    @include flex-center;
+    border-radius: $radius-full;
+    background: rgba($color-success, 0.1);
+  }
+
+  &__success-title {
+    font-family: $font-heading;
+    font-size: $text-2xl;
+    color: $color-navy;
+  }
+
+  &__reset-btn {
+    @include btn-primary;
+    margin-top: $space-2;
+  }
+}
+
+// ── Form internals ─────────────────────────────────────────────
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.form {
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+
+    &--checkbox {
+      gap: $space-2;
+    }
+  }
+
+  &__label {
+    font-size: $text-sm;
+    font-weight: 500;
+    color: $color-text-dark;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $space-3 $space-4;
+    border: 1.5px solid $color-warm-gray;
+    border-radius: $radius-md;
+    font-family: $font-body;
+    font-size: $text-sm;
+    color: $color-text-dark;
+    background: $color-off-white;
+    transition: border-color $transition-fast, box-shadow $transition-fast, background $transition-fast;
+
+    &::placeholder { color: rgba($color-text-muted, 0.7); }
+
+    &:focus {
+      border-color: $color-gold;
+      background: $color-white;
+      box-shadow: 0 0 0 3px rgba($color-gold, 0.12);
+      outline: none;
+    }
+
+    &.is-error {
+      border-color: $color-error;
+      background: rgba($color-error, 0.03);
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($color-error, 0.1);
+      }
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &__error {
+    font-size: $text-xs;
+    color: $color-error;
+    font-weight: 500;
+  }
+
+  &__error-banner {
+    padding: $space-3 $space-4;
+    background: rgba($color-error, 0.08);
+    border: 1px solid rgba($color-error, 0.2);
+    border-radius: $radius-md;
+    font-size: $text-sm;
+    color: $color-error;
+    margin-bottom: 0;
+  }
+
+  // ── Checkbox ──────────────────────────────────────────────
+  &__checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: $space-3;
+    cursor: pointer;
+
+    &.is-error .form__checkbox-custom {
+      border-color: $color-error;
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .form__checkbox-custom {
+      background: $color-gold;
+      border-color: $color-gold;
+
+      &::after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+      }
+    }
+  }
+
+  &__checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid $color-warm-gray;
+    border-radius: $radius-sm;
+    background: $color-off-white;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    transition: background $transition-fast, border-color $transition-fast;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border: 2px solid $color-navy;
+      border-top: none;
+      border-left: none;
+      opacity: 0;
+      transform: rotate(45deg) scale(0.6);
+      transition: opacity $transition-fast, transform $transition-fast;
+    }
+  }
+
+  &__consent-text {
+    font-size: $text-sm;
+    color: $color-text-muted;
+    line-height: 1.5;
+  }
+
+  // ── Submit ────────────────────────────────────────────────
+  &__submit {
+    @include btn-primary;
+    justify-content: center;
+    width: 100%;
+    margin-top: $space-2;
+    font-size: $text-sm;
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  &__spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba($color-navy, 0.3);
+    border-top-color: $color-navy;
+    border-radius: $radius-full;
+    animation: spin 0.7s linear infinite;
+  }
+}

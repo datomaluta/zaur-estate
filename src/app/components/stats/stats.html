@@ -1,0 +1,17 @@
+<section class="stats" #section>
+  <div class="stats__container">
+    <div class="stats__grid">
+      @for (stat of data.stats; track stat.key; let i = $index) {
+        <div class="stats__item">
+          <div class="stats__icon-wrap">
+            <lucide-icon [name]="stat.icon" [size]="24" [strokeWidth]="1.5" />
+          </div>
+          <div class="stats__number">
+            {{ counters()[i] }}{{ getSuffix(stat.key) }}
+          </div>
+          <div class="stats__label">{{ getLabel(stat.key) }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

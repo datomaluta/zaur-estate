@@ -1,0 +1,65 @@
+<section class="testimonials" id="testimonials">
+  <div class="testimonials__container">
+    <header class="testimonials__header">
+      <span class="section-eyebrow">{{ lang.t().testimonials.eyebrow }}</span>
+      <h2 class="testimonials__title">{{ lang.t().testimonials.title }}</h2>
+      <p class="testimonials__subtitle">{{ lang.t().testimonials.subtitle }}</p>
+    </header>
+
+    <!-- Carousel -->
+    <div
+      class="testimonials__carousel"
+      (mouseenter)="pauseAutoPlay()"
+      (mouseleave)="resumeAutoPlay()"
+      (touchstart)="pauseAutoPlay()"
+    >
+      <div class="testimonials__track-wrapper">
+        <div class="testimonials__track" [style]="trackStyle()">
+          @for (item of lang.t().testimonials.items; track item.name) {
+            <article class="testimonials__card">
+              <div class="testimonials__quote-mark" aria-hidden="true">"</div>
+
+              <div class="testimonials__stars">
+                @for (s of stars(5); track $index) {
+                  <lucide-icon name="Star" [size]="14" [strokeWidth]="0" class="testimonials__star" />
+                }
+              </div>
+
+              <blockquote class="testimonials__quote">{{ item.quote }}</blockquote>
+
+              <footer class="testimonials__author">
+                <div class="testimonials__avatar">{{ item.avatarInitials }}</div>
+                <div class="testimonials__author-info">
+                  <strong class="testimonials__name">{{ item.name }}</strong>
+                  <span class="testimonials__role">{{ item.role }}</span>
+                </div>
+              </footer>
+            </article>
+          }
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="testimonials__nav">
+        <button class="testimonials__nav-btn" (click)="prev()" aria-label="Previous testimonial">
+          <lucide-icon name="ChevronLeft" [size]="20" [strokeWidth]="2" />
+        </button>
+
+        <div class="testimonials__dots">
+          @for (item of lang.t().testimonials.items; track item.name; let i = $index) {
+            <button
+              class="testimonials__dot"
+              [class.testimonials__dot--active]="activeIndex() === i"
+              (click)="goTo(i)"
+              [attr.aria-label]="'Go to testimonial ' + (i + 1)"
+            ></button>
+          }
+        </div>
+
+        <button class="testimonials__nav-btn" (click)="next()" aria-label="Next testimonial">
+          <lucide-icon name="ChevronRight" [size]="20" [strokeWidth]="2" />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

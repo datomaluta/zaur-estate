@@ -1,0 +1,65 @@
+<footer class="footer">
+  <div class="footer__container">
+    <div class="footer__top">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <span class="footer__logo">Zaur Realty</span>
+        <p class="footer__tagline">{{ lang.t().footer.tagline }}</p>
+        <div class="footer__socials">
+          @for (social of socialLinks; track social.label) {
+            <a [href]="social.href" class="footer__social-link" [attr.aria-label]="social.label" target="_blank" rel="noopener">
+              <lucide-icon [name]="social.icon" [size]="18" [strokeWidth]="1.5" />
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="footer__col">
+        <h4 class="footer__col-heading">{{ lang.t().footer.servicesHeading }}</h4>
+        <ul class="footer__list">
+          @for (link of lang.t().footer.serviceLinks; track link) {
+            <li><a href="#services" class="footer__link">{{ link }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer__col">
+        <h4 class="footer__col-heading">{{ lang.t().footer.companyHeading }}</h4>
+        <ul class="footer__list">
+          @for (link of lang.t().footer.companyLinks; track link.label) {
+            <li><a [href]="link.anchor" class="footer__link">{{ link.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="footer__col">
+        <h4 class="footer__col-heading">{{ lang.t().footer.contactHeading }}</h4>
+        <ul class="footer__list footer__list--contact">
+          <li>
+            <lucide-icon name="Phone" [size]="14" [strokeWidth]="1.5" />
+            <a href="tel:+995555123456" class="footer__link">{{ lang.t().contact.phone }}</a>
+          </li>
+          <li>
+            <lucide-icon name="Mail" [size]="14" [strokeWidth]="1.5" />
+            <a href="mailto:hello@zaurrealty.com" class="footer__link">{{ lang.t().contact.email }}</a>
+          </li>
+          <li>
+            <lucide-icon name="MapPin" [size]="14" [strokeWidth]="1.5" />
+            <span class="footer__link">{{ lang.t().contact.address }}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">{{ lang.t().footer.copyright }}</p>
+      <button class="footer__back-top" (click)="scrollToTop()" [attr.aria-label]="lang.t().footer.backToTop">
+        <lucide-icon name="ArrowUp" [size]="16" [strokeWidth]="2" />
+        <span>{{ lang.t().footer.backToTop }}</span>
+      </button>
+    </div>
+  </div>
+</footer>

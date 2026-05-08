@@ -1,0 +1,36 @@
+<section class="services" id="services">
+  <div class="services__container">
+    <header class="services__header">
+      <span class="section-eyebrow">{{ lang.t().services.eyebrow }}</span>
+      <h2 class="services__title">{{ lang.t().services.title }}</h2>
+      <p class="services__subtitle">{{ lang.t().services.subtitle }}</p>
+    </header>
+
+    <div class="services__grid">
+      @for (card of lang.t().services.cards; track card.title; let i = $index) {
+        <article
+          class="services__card"
+          [class.services__card--active]="activeCard() === i"
+          (mouseenter)="activeCard.set(i)"
+          (mouseleave)="activeCard.set(null)"
+        >
+          <div class="services__card-icon">
+            <lucide-icon [name]="getIcon(i)" [size]="28" [strokeWidth]="1.5" />
+          </div>
+
+          <h3 class="services__card-title">{{ card.title }}</h3>
+          <p class="services__card-desc">{{ card.description }}</p>
+
+          <ul class="services__features">
+            @for (feature of card.features; track feature) {
+              <li class="services__feature">
+                <lucide-icon name="Check" [size]="14" [strokeWidth]="2.5" class="services__check" />
+                <span>{{ feature }}</span>
+              </li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,51 @@
+@use 'variables' as *;
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-body;
+  font-size: $text-base;
+  line-height: 1.65;
+  color: $color-text-dark;
+  background-color: $color-off-white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 600;
+  line-height: 1.2;
+  color: $color-navy;
+}
+
+p { margin-bottom: $space-4; }
+p:last-child { margin-bottom: 0; }
+
+strong { font-weight: 600; }
+
+// Georgian font override — activated by LanguageService setting lang="ka" on <html>
+// !important needed to override component-level encapsulated font-family declarations
+:lang(ka),
+:lang(ka) * {
+  font-family: $font-body-ka !important;
+}
+
+// Utility classes
+.text-gold   { color: $color-gold !important; }
+.text-navy   { color: $color-navy !important; }
+.text-muted  { color: $color-text-muted !important; }
+.text-white  { color: $color-white !important; }
+.text-center { text-align: center; }
+
+.section-eyebrow {
+  display: block;
+  font-size: $text-xs;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-gold;
+  margin-bottom: $space-3;
+}
