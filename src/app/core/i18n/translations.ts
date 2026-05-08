@@ -107,6 +107,8 @@ export interface ContactTranslations {
   hours: string;
   callTitle: string;
   callDesc: string;
+  agentName: string;
+  agentTitle: string;
   form: ContactFormTranslations;
 }
 
@@ -152,10 +154,10 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       badge: '5.0 ★ Rating  ·  550+ Satisfied Clients',
     },
     stats: {
-      sold:    { label: 'Properties Sold',   suffix: '+' },
-      leased:  { label: 'Homes Leased',      suffix: '+' },
+      sold: { label: 'Properties Sold', suffix: '+' },
+      leased: { label: 'Homes Leased', suffix: '+' },
       clients: { label: 'Satisfied Clients', suffix: '+' },
-      years:   { label: 'Years Experience',  suffix: '' },
+      years: { label: 'Years Experience', suffix: '' },
     },
     services: {
       eyebrow: 'What I Offer',
@@ -166,7 +168,12 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           title: 'Buying',
           description:
             'Find your ideal property with expert market analysis, strategic negotiation, and seamless closing support.',
-          features: ['Market Analysis', 'Property Shortlisting', 'Offer Negotiation', 'Due Diligence'],
+          features: [
+            'Market Analysis',
+            'Property Shortlisting',
+            'Offer Negotiation',
+            'Due Diligence',
+          ],
         },
         {
           title: 'Selling',
@@ -189,36 +196,41 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       steps: [
         {
           title: 'Initial Consultation',
-          description: 'We clarify your goals, budget, and timeline in a focused 30-minute session — no obligations.',
+          description:
+            'We clarify your goals, budget, and timeline in a focused 30-minute session — no obligations.',
         },
         {
           title: 'Market Research',
-          description: 'In-depth analysis of comparables, pricing trends, and neighborhood dynamics tailored to your criteria.',
+          description:
+            'In-depth analysis of comparables, pricing trends, and neighborhood dynamics tailored to your criteria.',
         },
         {
           title: 'Property Search',
-          description: 'A curated shortlist of properties that truly match your requirements — your time is never wasted.',
+          description:
+            'A curated shortlist of properties that truly match your requirements — your time is never wasted.',
         },
         {
           title: 'Offer & Negotiate',
-          description: 'Strategic offer framing and skilled negotiation to secure the best possible terms on your behalf.',
+          description:
+            'Strategic offer framing and skilled negotiation to secure the best possible terms on your behalf.',
         },
         {
           title: 'Close & Celebrate',
-          description: 'Meticulous paperwork management and coordination through to a smooth, stress-free closing day.',
+          description:
+            'Meticulous paperwork management and coordination through to a smooth, stress-free closing day.',
         },
       ],
     },
     testimonials: {
       eyebrow: 'Client Stories',
-      title: 'Trusted by Hundreds of Families',
+      title: 'Trusted by Hundreds of Satisfied Clients',
       subtitle: 'Real results, real relationships.',
       items: [
         {
           name: 'Sarah Mitchell',
           role: 'First-time Buyer',
           quote:
-            'The whole process felt effortless. We found our forever home in under 3 weeks, and the negotiation saved us €12,000. Couldn\'t recommend more highly.',
+            "The whole process felt effortless. We found our forever home in under 3 weeks, and the negotiation saved us €12,000. Couldn't recommend more highly.",
           avatarInitials: 'SM',
         },
         {
@@ -239,36 +251,40 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           name: 'David & Emma R.',
           role: 'Relocation Clients',
           quote:
-            'We were relocating from overseas and handled everything remotely. The entire process was flawless — found us a perfect home we\'d never have discovered on our own.',
+            "We were relocating from overseas and handled everything remotely. The entire process was flawless — found us a perfect home we'd never have discovered on our own.",
           avatarInitials: 'DE',
         },
       ],
     },
     contact: {
       eyebrow: 'Get In Touch',
-      title: 'Let\'s Start Your Journey',
-      subtitle: 'Whether you\'re buying, selling, or just exploring — I\'m here to help. Send a message and I\'ll respond within 24 hours.',
-      phone: '+995 555 123 456',
+      title: "Let's Start Your Journey",
+      subtitle:
+        "Whether you're buying, selling, or just exploring — I'm here to help. Send a message and I'll respond within 24 hours.",
+      phone: '+995 568 91 91 35',
       phoneRaw: '+995555123456',
       email: 'hello@zaurrealty.com',
       address: 'Tbilisi, Georgia',
-      hours: 'Mon – Sat · 09:00 – 20:00',
+      hours: 'Available 24/7 — always here when you need us',
       callTitle: 'Call for a Free Consultation',
-      callDesc: 'Ready to talk? Call directly and I\'ll answer any questions about buying, selling, or property management — no obligations.',
+      callDesc:
+        "Ready to talk? Call directly and I'll answer any questions about buying, selling, or property management — no obligations.",
+      agentName: 'Zaur Vashakidze',
+      agentTitle: 'Senior Real Estate Agent',
       form: {
         nameLabel: 'Full Name',
         namePlaceholder: 'Your full name',
         emailLabel: 'Email Address',
         emailPlaceholder: 'your@email.com',
         phoneLabel: 'Phone Number (optional)',
-        phonePlaceholder: '+995 555 000 000',
+        phonePlaceholder: '+995 568 91 91 35',
         messageLabel: 'Message',
         messagePlaceholder: 'Tell me about your property goals...',
         consentLabel: 'I agree to be contacted regarding my enquiry.',
         submit: 'Send Message',
         submitting: 'Sending...',
         successTitle: 'Message Received!',
-        successMessage: 'Thank you for reaching out. I\'ll be in touch within 24 hours.',
+        successMessage: "Thank you for reaching out. I'll be in touch within 24 hours.",
         errorMessage: 'Something went wrong. Please try again or call directly.',
         validation: {
           nameRequired: 'Name is required',
@@ -309,7 +325,7 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
     },
     hero: {
       eyebrow: 'პრემიუმ უძრავი ქონების სერვისი',
-      headline: 'თქვენი სიზმარი —\nჩვენი მისია',
+      headline: 'თქვენი მახვილი —\nჩემი კისერი',
       subheadline:
         '15 წელზე მეტი გამოცდილებით, ვაქცევ უძრავი ქონების რთულ გადაწყვეტილებებს დამაჯერებელ და ხარებიან მოგზაურობად — მყიდველებისთვის, გამყიდველებისა და ინვესტორებისთვის.',
       cta: 'კონსულტაციის დაჯავშნა',
@@ -317,10 +333,10 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
       badge: '5.0 ★ შეფასება  ·  550+ კმაყოფილი კლიენტი',
     },
     stats: {
-      sold:    { label: 'გაყიდული ბინა',      suffix: '+' },
-      leased:  { label: 'გაქირავებული სახლი', suffix: '+' },
-      clients: { label: 'კმაყოფილი კლიენტი',  suffix: '+' },
-      years:   { label: 'წლის გამოცდილება',   suffix: '' },
+      sold: { label: 'გაყიდული ბინა', suffix: '+' },
+      leased: { label: 'გაქირავებული სახლი', suffix: '+' },
+      clients: { label: 'კმაყოფილი კლიენტი', suffix: '+' },
+      years: { label: 'წლის გამოცდილება', suffix: '' },
     },
     services: {
       eyebrow: 'ჩემი სერვისები',
@@ -331,42 +347,62 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
           title: 'ყიდვა',
           description:
             'იპოვეთ იდეალური ქონება ბაზრის ექსპერტული ანალიზით, სტრატეგიული მოლაპარაკებებითა და გარიგების მოქნილი მართვით.',
-          features: ['ბაზრის ანალიზი', 'ქონების შერჩევა', 'შეთავაზების მოლაპარაკება', 'Due Diligence'],
+          features: [
+            'ბაზრის ანალიზი',
+            'ქონების შერჩევა',
+            'შეთავაზების მოლაპარაკება',
+            'Due Diligence',
+          ],
         },
         {
           title: 'გაყიდვა',
           description:
             'გაზარდეთ გაყიდვის ფასი პროფესიონალური სტეიჯინგის, პრემიუმ ფოტოგრაფიისა და მიზნობრივი მარკეტინგის გეგმით.',
-          features: ['უფასო შეფასება', 'სტეიჯინგის რჩევა', 'პრემიუმ განცხადება', 'შეთავაზების მართვა'],
+          features: [
+            'უფასო შეფასება',
+            'სტეიჯინგის რჩევა',
+            'პრემიუმ განცხადება',
+            'შეთავაზების მართვა',
+          ],
         },
         {
           title: 'ქონების მართვა',
           description:
             'უნაღდო მფლობელობა. ჩვენ ვმართავთ მოიჯარეებს, ტექნიკურ მომსახურებასა და კანონმდებლობასთან შესაბამისობას.',
-          features: ['მოიჯარის შერჩევა', 'ქირის შეგროვება', 'ტექნიკური მომსახურება', 'შესაბამისობა'],
+          features: [
+            'მოიჯარის შერჩევა',
+            'ქირის შეგროვება',
+            'ტექნიკური მომსახურება',
+            'შესაბამისობა',
+          ],
         },
       ],
     },
     process: {
       eyebrow: 'ჩემი მეთოდი',
       title: 'როგორ ვთანამშრომლობ',
-      subtitle: 'გამჭვირვალე, კლიენტზე ორიენტირებული მიდგომა პირველი შეხვედრიდან გასაღებების ჩაბარებამდე.',
+      subtitle:
+        'გამჭვირვალე, კლიენტზე ორიენტირებული მიდგომა პირველი შეხვედრიდან გასაღებების ჩაბარებამდე.',
       steps: [
         {
           title: 'პირველი კონსულტაცია',
-          description: 'განვსაზღვრავთ თქვენს მიზნებს, ბიუჯეტს და ვადებს — 30 წუთიანი, სავალდებულო ვალდებულებების გარეშე.',
+          description:
+            'განვსაზღვრავთ თქვენს მიზნებს, ბიუჯეტს და ვადებს — 30 წუთიანი, სავალდებულო ვალდებულებების გარეშე.',
         },
         {
           title: 'ბაზრის კვლევა',
-          description: 'ანალოგური ქონებების, ფასთა ტენდენციებისა და სამეზობლოს დინამიკის სიღრმისეული ანალიზი.',
+          description:
+            'ანალოგური ქონებების, ფასთა ტენდენციებისა და სამეზობლოს დინამიკის სიღრმისეული ანალიზი.',
         },
         {
           title: 'ქონების ძიება',
-          description: 'შერჩეული სია, რომელიც ნამდვილად შეესაბამება თქვენს მოთხოვნებს — თქვენი დრო ფასეულია.',
+          description:
+            'შერჩეული სია, რომელიც ნამდვილად შეესაბამება თქვენს მოთხოვნებს — თქვენი დრო ფასეულია.',
         },
         {
           title: 'შეთავაზება და მოლაპარაკება',
-          description: 'სტრატეგიული შეთავაზება და გამოცდილი მოლაპარაკება საუკეთესო პირობების მოსაპოვებლად.',
+          description:
+            'სტრატეგიული შეთავაზება და გამოცდილი მოლაპარაკება საუკეთესო პირობების მოსაპოვებლად.',
         },
         {
           title: 'დახურვა და ზეიმი',
@@ -376,7 +412,7 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
     },
     testimonials: {
       eyebrow: 'კლიენტების ამბები',
-      title: 'ასობით ოჯახის ნდობა',
+      title: 'ასობით ადამიანის ნდობა',
       subtitle: 'რეალური შედეგები, რეალური ურთიერთობები.',
       items: [
         {
@@ -412,21 +448,25 @@ export const TRANSLATIONS: Record<Lang, Translations> = {
     contact: {
       eyebrow: 'დაგვიკავშირდით',
       title: 'დავიწყოთ თქვენი მოგზაურობა',
-      subtitle: 'ყიდვა, გაყიდვა თუ უბრალოდ შესწავლა — მე აქ ვარ. გამოაგზავნეთ შეტყობინება და 24 საათში გიპასუხებ.',
-      phone: '+995 555 123 456',
+      subtitle:
+        'ყიდვა, გაყიდვა თუ უბრალოდ შესწავლა — მე აქ ვარ. გამოაგზავნეთ შეტყობინება და 24 საათში გიპასუხებ.',
+      phone: '+995 568 91 91 35',
       phoneRaw: '+995555123456',
       email: 'hello@zaurrealty.com',
       address: 'თბილისი, საქართველო',
-      hours: 'ორშ – შაბ · 09:00 – 20:00',
+      hours: '24/7 ხელმისაწვდომი — ყოველთვის აქ ვართ, როცა გვჭირდებით',
       callTitle: 'დარეკეთ უფასო კონსულტაციისთვის',
-      callDesc: 'მზად ხართ ისაუბროთ? დამირეკეთ პირდაპირ და ნებისმიერ კითხვას გიპასუხებ ყიდვის, გაყიდვის ან ქონების მართვის შესახებ — ვალდებულებების გარეშე.',
+      callDesc:
+        'მზად ხართ ისაუბროთ? დამირეკეთ პირდაპირ და ნებისმიერ კითხვას გიპასუხებ ყიდვის, გაყიდვის ან ქონების მართვის შესახებ — ვალდებულებების გარეშე.',
+      agentName: 'ზაურ ვაშაკიძე',
+      agentTitle: 'სენიორ უძრავი ქონების აგენტი',
       form: {
         nameLabel: 'სრული სახელი',
         namePlaceholder: 'თქვენი სრული სახელი',
         emailLabel: 'ელ-ფოსტა',
         emailPlaceholder: 'your@email.com',
         phoneLabel: 'ტელეფონი (სურვილისამებრ)',
-        phonePlaceholder: '+995 555 000 000',
+        phonePlaceholder: '+995 568 91 91 35',
         messageLabel: 'შეტყობინება',
         messagePlaceholder: 'მოგვიყევით თქვენი ქონებრივი მიზნების შესახებ...',
         consentLabel: 'ვეთანხმები, რომ დამიკავშირდნენ მოთხოვნის საკითხზე.',
